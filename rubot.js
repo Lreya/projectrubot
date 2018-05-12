@@ -14,6 +14,7 @@ for (const file of commandFiles) {
 
 client.on('ready', () => {
 	console.log('Ready');
+	console.log(`Ready to server in ${client.channels.size} channels on ${client.guilds.size} servers, for a total of ${client.users.size} users.`);
 	console.log(`available commands: ${commandFiles}`);
 });
 
@@ -30,7 +31,7 @@ client.on('message', msg => {
 
 	try {
 		client.commands.get(command).execute(msg, args);
-		console.log(`${msg.createdAt} ${command} called by ${msg.author}`);
+		console.log(`${msg.createdAt} ${command} called by ${msg.author.username}`);
 	}
 	catch (e) {
 		console.error(e);
